@@ -1,0 +1,19 @@
+[package]
+name = "gcal-widget"
+version = "1.0.0"
+description = "Frameless always-on-top desktop widget for a self-hosted web calendar"
+authors = ["Caelan Ross"]
+edition = "2021"
+
+# main.rs calls gcal_widget_lib::run(), so the lib crate must be named accordingly.
+[lib]
+name = "gcal_widget_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-autostart = "2"

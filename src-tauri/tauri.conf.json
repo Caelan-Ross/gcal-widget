@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schema.tauri.app/config/2.0.0",
+  "productName": "gcal-widget",
+  "version": "1.0.0",
+  "identifier": "com.caelanross.gcalwidget",
+  "build": {
+    "frontendDist": "http://192.168.1.130:8099",
+    "devUrl": "http://192.168.1.130:8099"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "gcal",
+        "title": "gcal-widget",
+        "width": 400,
+        "height": 720,
+        "x": 40,
+        "y": 40,
+        "decorations": false,
+        "transparent": true,
+        "resizable": true,
+        "skipTaskbar": true,
+        "shadow": false,
+        "alwaysOnBottom": true
+      }
+    ],
+    "withGlobalTauri": true,
+    "security": { "csp": null }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}
