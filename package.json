@@ -1,5 +1,6 @@
 {
   "name": "gcal-widget",
+  "description": "Always-on-bottom desktop widget for a self-hosted web calendar",
   "private": true,
   "version": "1.0.0",
   "type": "module",

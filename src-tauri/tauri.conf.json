@@ -22,6 +22,22 @@
         "skipTaskbar": true,
         "shadow": false,
         "alwaysOnBottom": true
+      },
+      {
+        "label": "gcal-buffer",
+        "title": "gcal-widget-buffer",
+        "width": 400,
+        "height": 720,
+        "x": 40,
+        "y": 40,
+        "decorations": false,
+        "transparent": true,
+        "resizable": true,
+        "skipTaskbar": true,
+        "shadow": false,
+        "alwaysOnBottom": true,
+        "visible": false,
+        "url": "about:blank"
       }
     ],
     "withGlobalTauri": true,

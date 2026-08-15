@@ -1,12 +1,14 @@
 # gcal-widget
 
-A frameless, always-on-top desktop widget for **Windows 11** that displays a
+A frameless, always-on-bottom desktop widget for **Windows 11** that displays a
 self-hosted web calendar. Built with [Tauri v2](https://tauri.app/).
 
 The widget is a thin native shell: it does **not** bundle a frontend. It points a
 WebView2 window directly at the calendar served by its sister project (see below)
 and adds desktop-widget behavior on top — no decorations, transparent background,
-always-on-top, click-through toggle, tray icon, and launch-at-login.
+always-on-bottom, click-through toggle, tray icon, and launch-at-login. Calendar
+refreshes are double-buffered: a hidden WebView loads the next generation every
+five minutes, then replaces the visible one only after it is ready.
 
 ## Sister project: `gcal-embed`
 
@@ -75,19 +77,19 @@ Outputs under `src-tauri/target/release/`:
 | **Toggle glance / interactive** | **Ctrl+Alt+C** (glance = clicks pass through) |
 | **Quit** | Right-click the tray icon → **Quit** |
 
-The window starts **interactive** (clickable) and registers itself to **launch at
-login** on first run.
+The window starts **interactive** (clickable). Release builds register themselves
+to **launch at login**; development runs leave any installed release entry alone.
 
-> **Autostart points at the exe that was running when it registered.** After
-> `npm run tauri build`, run the installed release exe once so the login entry
-> (`HKCU\...\CurrentVersion\Run`) points at it rather than a dev build.
+> **Autostart points at the release exe that registered it.** After
+> `npm run tauri build`, run the installed release exe once to enable the login
+> entry (`HKCU\...\CurrentVersion\Run`). Debug runs never overwrite or disable it.
 
 ## Layout
 
 | Path | Purpose |
 | --- | --- |
 | [`src-tauri/tauri.conf.json`](src-tauri/tauri.conf.json) | Window, bundle, and remote-URL config |
-| [`src-tauri/src/lib.rs`](src-tauri/src/lib.rs) | App logic: drag injection, shortcut toggle, tray, autostart |
+| [`src-tauri/src/lib.rs`](src-tauri/src/lib.rs) | App logic: buffered refresh, drag injection, shortcut toggle, tray, autostart |
 | [`src-tauri/capabilities/default.json`](src-tauri/capabilities/default.json) | Permissions, incl. remote-origin access for the calendar URL |
 
 The files under `src/` are leftover scaffold and are **not** used — the widget

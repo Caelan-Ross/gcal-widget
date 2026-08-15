@@ -2,7 +2,7 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
   "description": "Widget window capability",
-  "windows": ["gcal"],
+  "windows": ["gcal", "gcal-buffer"],
   "remote": { "urls": ["http://192.168.1.130:8099/*"] },
-  "permissions": ["core:default", "core:window:allow-start-dragging"]
+  "permissions": ["core:window:allow-start-dragging"]
 }
